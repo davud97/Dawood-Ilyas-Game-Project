@@ -1,13 +1,19 @@
 // global variables
 
-const bird = document.querySelector("bird")
-const target = document.querySelector("target")
-const blood = document.querySelector("blood")
-const scoreDisplay = document.querySelector("score")
-const bestDisplay = document.querySelector("best-score")
-const timerDisplay = document.querySelector("timer")
-const levelDisplay = document.querySelector("level")
-const gameArea = document.querySelector("game-area")
+const bird = document.querySelector("#bird")
+const target = document.querySelector("#target")
+const blood = document.querySelector("#blood")
+const scoreDisplay = document.querySelector("#score")
+const bestDisplay = document.querySelector("#best-score")
+const timerDisplay = document.querySelector("#timer")
+const levelDisplay = document.querySelector("#level")
+const gameArea = document.querySelector("#game-area")
+
+// red is an named event here
+window.addEventListener("mousemove", (red) => {
+  target.style.left = red.pageX + "px"
+  target.style.top = red.pageY + "px"
+})
 
 let score = 0
 let bestScore = 0

@@ -25,6 +25,7 @@ html {
   font-size: 3rem;
   margin-bottom: 20px;
 }
+
 .target {
   height: 60px;
   width: 60px;
@@ -34,7 +35,9 @@ html {
   transform: translate(-50%, -50%);
   transition: transform 0.1s ease-out;
   opacity: 1;
+  pointer-events: none;
 }
+
 .button {
   display: inline-block;
   padding: 12px 25px;
@@ -96,11 +99,11 @@ html {
   cursor: crosshair;
 }
 .blood {
-  width: 60px; /* smaller than bird */
+  width: 60px;
   height: 60px;
   position: absolute;
   transform: translate(-50%, -50%);
-  pointer-events: none; /* so it doesn't block clicks */
+  pointer-events: none;
   z-index: 9;
 }
 

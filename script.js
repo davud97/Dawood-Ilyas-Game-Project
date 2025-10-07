@@ -3,7 +3,7 @@ const bird = document.querySelector("#bird")
 const target = document.querySelector("#target")
 const blood = document.querySelector("#blood")
 const scoreDisplay = document.querySelector("#score")
-
+const gunSound = document.querySelector(".shot")
 const bestDisplay = document.querySelector("#best-score")
 const timerDisplay = document.querySelector("#timer")
 const levelDisplay = document.querySelector("#level")
@@ -18,6 +18,14 @@ let moveInterval = 1400
 let gameTimer
 let birdMovement
 let levelCountdown
+
+// gun shot game sound functions will go here
+target.addEventListener("click", () => {
+  gunSound.currentTime = 0
+  gunSound.play()
+  score += 10
+  scoreDisplay.textContent = score
+})
 
 // Move target with mouse
 window.addEventListener("mousemove", (event) => {

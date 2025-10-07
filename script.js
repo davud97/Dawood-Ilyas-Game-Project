@@ -4,13 +4,11 @@ const target = document.querySelector("#target")
 const blood = document.querySelector("#blood")
 const scoreDisplay = document.querySelector("#score")
 const gunSound = document.querySelector("#shot")
-const bestDisplay = document.querySelector("#best-score")
 const timerDisplay = document.querySelector("#timer")
 const levelDisplay = document.querySelector("#level")
 const gameArea = document.querySelector("#game-area")
 
 let score
-let bestScore
 let timeLeft = 20
 let level = 1
 
@@ -19,7 +17,7 @@ let gameTimer
 let birdMovement
 let levelCountdown
 
-// gun shot game sound functions will go here
+// gun shot sound
 bird.addEventListener("click", () => {
   gunSound.currentTime = 0
   gunSound.play()
@@ -33,20 +31,19 @@ window.addEventListener("mousemove", (event) => {
   target.style.top = event.pageY + "px"
 })
 
-// her we will start game
+// start game
 const startGame = () => {
   score = 0
   timeLeft = 20
   scoreDisplay.textContent = score
   timerDisplay.textContent = timeLeft
-  bestDisplay.textContent = bestScore
 
   countdownStart(() => {
     startLevel()
   })
 }
 
-// for now here i have given the  countdown before game starts in the same box but the final design will be implemented later
+// countdown before game starts
 const countdownStart = (callback) => {
   let count = 3
   timerDisplay.textContent = "Start in " + count
@@ -61,7 +58,7 @@ const countdownStart = (callback) => {
   }, 1000)
 }
 
-// level one starts here
+// level one starts
 const startLevel = () => {
   levelDisplay.textContent = level
   moveBirdRandomly()
@@ -72,7 +69,6 @@ const startLevel = () => {
     if (timeLeft <= 0) {
       clearInterval(gameTimer)
       clearInterval(birdMovement)
-      saveBestScore()
       levelUp()
     }
   }, 1000)
@@ -80,7 +76,7 @@ const startLevel = () => {
   birdMovement = setInterval(moveBirdRandomly, moveInterval)
 }
 
-// Move bird randomly avoiding corners because the bird without this logic appears more in the corner
+// Move bird randomly
 const moveBirdRandomly = () => {
   const padding = 50
   const maxX = gameArea.clientWidth - bird.clientWidth - padding
@@ -91,21 +87,13 @@ const moveBirdRandomly = () => {
 
   bird.style.left = randomX + "px"
   bird.style.top = randomY + "px"
-  bird.style.display = "block" // bird stays visible
-}
-
-// Save best score per level so that user can try to beat it their own best
-const saveBestScore = () => {
-  if (score > bestScore) {
-    bestScore = score
-    bestDisplay.textContent = bestScore
-  }
+  bird.style.display = "block"
 }
 
 // Level up logic
 const levelUp = () => {
   if (level >= 3) {
-    alert("Game Over! Final Best Score: " + bestScore)
+    alert("Game Over!")
     level = 1
     moveInterval = 1400
     return
@@ -127,14 +115,14 @@ const levelUp = () => {
   }, 1000)
 }
 
-// Hit detection — score increases instantly when bird is clicked
+// Hit detection
 bird.addEventListener("click", (event) => {
   score += 10
   scoreDisplay.textContent = score
   showBlood(event.pageX, event.pageY)
 })
 
-// Blood effect on hit
+// Blood effect
 const showBlood = (x, y) => {
   blood.style.left = x - 30 + "px"
   blood.style.top = y - 30 + "px"

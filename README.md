@@ -12,6 +12,7 @@ I i have written very basic HTML for my main page and game page. secondly i crea
 * You can replay the game to try and beat your best score.
 
 ### CSS
-
+The CSS file (style.css) defines the layout and appearance of all game elements. It controls the visuals of the background, scoreboard, bird, and custom target. The .target class uses the property pointer-events: none; to ensure that the player can click the bird even when the target image overlaps it. The CSS also applies smooth transitions and animations to make the game more engaging.
+s
 
 

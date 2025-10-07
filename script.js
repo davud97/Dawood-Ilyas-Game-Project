@@ -81,7 +81,7 @@ const startLevel = () => {
 }
 
 // Move bird randomly avoiding corners because the bird without this logic appears more in the corner
-function moveBirdRandomly() {
+const moveBirdRandomly = () => {
   const padding = 50
   const maxX = gameArea.clientWidth - bird.clientWidth - padding
   const maxY = gameArea.clientHeight - bird.clientHeight - padding
@@ -95,7 +95,7 @@ function moveBirdRandomly() {
 }
 
 // Save best score per level so that user can try to beat it their own best
-function saveBestScore() {
+const saveBestScore = () => {
   if (score > bestScore) {
     bestScore = score
     bestDisplay.textContent = bestScore
@@ -103,7 +103,7 @@ function saveBestScore() {
 }
 
 // Level up logic
-function levelUp() {
+const levelUp = () => {
   if (level >= 3) {
     alert("Game Over! Final Best Score: " + bestScore)
     level = 1
@@ -135,7 +135,7 @@ bird.addEventListener("click", (event) => {
 })
 
 // Blood effect on hit
-function showBlood(x, y) {
+const showBlood = (x, y) => {
   blood.style.left = x - 30 + "px"
   blood.style.top = y - 30 + "px"
   blood.classList.remove("hidden")

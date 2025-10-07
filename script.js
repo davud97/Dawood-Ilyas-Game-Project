@@ -1,4 +1,4 @@
-// global variables
+// Global variables
 const bird = document.querySelector("#bird")
 const target = document.querySelector("#target")
 const blood = document.querySelector("#blood")
@@ -9,15 +9,14 @@ const levelDisplay = document.querySelector("#level")
 const gameArea = document.querySelector("#game-area")
 
 let score
-let timeLeft = 20
+let timeLeft = 10
 let level = 1
-
 let moveInterval = 1400
 let gameTimer
 let birdMovement
 let levelCountdown
 
-// gun shot sound
+// Gun shot sound
 bird.addEventListener("click", () => {
   gunSound.currentTime = 0
   gunSound.play()
@@ -31,19 +30,18 @@ window.addEventListener("mousemove", (event) => {
   target.style.top = event.pageY + "px"
 })
 
-// start game
+// Start game
 const startGame = () => {
   score = 0
   timeLeft = 20
   scoreDisplay.textContent = score
   timerDisplay.textContent = timeLeft
-
   countdownStart(() => {
     startLevel()
   })
 }
 
-// countdown before game starts
+// Countdown before game starts
 const countdownStart = (callback) => {
   let count = 3
   timerDisplay.textContent = "Start in " + count
@@ -58,11 +56,10 @@ const countdownStart = (callback) => {
   }, 1000)
 }
 
-// level one starts
+// Level one starts
 const startLevel = () => {
   levelDisplay.textContent = level
   moveBirdRandomly()
-
   gameTimer = setInterval(() => {
     timeLeft--
     timerDisplay.textContent = timeLeft
@@ -72,7 +69,6 @@ const startLevel = () => {
       levelUp()
     }
   }, 1000)
-
   birdMovement = setInterval(moveBirdRandomly, moveInterval)
 }
 
@@ -81,10 +77,8 @@ const moveBirdRandomly = () => {
   const padding = 50
   const maxX = gameArea.clientWidth - bird.clientWidth - padding
   const maxY = gameArea.clientHeight - bird.clientHeight - padding
-
   const randomX = Math.floor(Math.random() * maxX) + padding / 2
   const randomY = Math.floor(Math.random() * maxY) + padding / 2
-
   bird.style.left = randomX + "px"
   bird.style.top = randomY + "px"
   bird.style.display = "block"
@@ -98,10 +92,8 @@ const levelUp = () => {
     moveInterval = 1400
     return
   }
-
   let count = 3
   timerDisplay.textContent = "Next Level in " + count
-
   levelCountdown = setInterval(() => {
     count--
     timerDisplay.textContent = "Next Level in " + count
@@ -127,7 +119,6 @@ const showBlood = (x, y) => {
   blood.style.left = x - 30 + "px"
   blood.style.top = y - 30 + "px"
   blood.classList.remove("hidden")
-
   setTimeout(() => {
     blood.classList.add("hidden")
   }, 200)

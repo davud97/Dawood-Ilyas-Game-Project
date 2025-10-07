@@ -34,7 +34,7 @@ window.addEventListener("mousemove", (event) => {
 })
 
 // her we will start game
-function startGame() {
+const startGame = () => {
   score = 0
   timeLeft = 20
   scoreDisplay.textContent = score
@@ -47,7 +47,7 @@ function startGame() {
 }
 
 // for now here i have given the  countdown before game starts in the same box but the final design will be implemented later
-function countdownStart(callback) {
+const countdownStart = (callback) => {
   let count = 3
   timerDisplay.textContent = "Start in " + count
   let startCount = setInterval(() => {
@@ -61,7 +61,8 @@ function countdownStart(callback) {
   }, 1000)
 }
 
-function startLevel() {
+// level one starts here
+const startLevel = () => {
   levelDisplay.textContent = level
   moveBirdRandomly()
 
@@ -93,7 +94,7 @@ function moveBirdRandomly() {
   bird.style.display = "block" // bird stays visible
 }
 
-// Save best score per level so that user can try to beat it theor own best
+// Save best score per level so that user can try to beat it their own best
 function saveBestScore() {
   if (score > bestScore) {
     bestScore = score

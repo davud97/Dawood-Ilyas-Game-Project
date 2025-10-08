@@ -1,3 +1,4 @@
+// global variables
 const bird = document.querySelector("#bird")
 const target = document.querySelector("#target")
 const blood = document.querySelector("#blood")
@@ -8,25 +9,20 @@ const levelDisplay = document.querySelector("#level")
 const gameArea = document.querySelector("#game-area")
 const gameOver = document.querySelector("#gameOver")
 
-let score,
-  timeLeft = 10,
-  level = 1,
-  moveInterval = 1200,
-  gameTimer,
-  birdMovement
+let score = 0
+let timeLeft = 10
+let level = 1
+let moveInterval = 1200
+let gameTimer
+let birdMovement
 
+// start the game
 document.body.addEventListener("click", function startClick() {
   document.body.removeEventListener("click", startClick)
   startGame()
 })
 
-bird.addEventListener("click", () => {
-  gunSound.currentTime = 0
-  gunSound.play()
-  score += 10
-  scoreDisplay.textContent = score
-})
-
+// move the target image (png) format with the mouse
 window.addEventListener("mousemove", (event) => {
   const targetWidth = target.offsetWidth / 2
   const targetHeight = target.offsetHeight / 2
@@ -34,6 +30,23 @@ window.addEventListener("mousemove", (event) => {
   target.style.left = event.pageX - targetWidth + "px"
   target.style.top = event.pageY - targetHeight + "px"
 })
+
+// clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
+bird.addEventListener("click", (event) => {
+  score += 10
+  scoreDisplay.textContent = score
+  showBlood(event.pageX, event.pageY)
+})
+
+// clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
+bird.addEventListener("click", () => {
+  gunSound.currentTime = 0
+  gunSound.play()
+  score += 10
+  scoreDisplay.textContent = score
+})
+
+// here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
 
 const startGame = () => {
   score = 0
@@ -43,6 +56,7 @@ const startGame = () => {
   countdownStart(startLevel)
 }
 
+// starts the game after initial countdown of 3s
 const countdownStart = (callback) => {
   let count = 3
   timerDisplay.textContent = "Start in " + count
@@ -56,6 +70,8 @@ const countdownStart = (callback) => {
     }
   }, 1000)
 }
+
+// shows the current level, spawn the bird randomly and displays times up as soon as timer ends.
 
 const startLevel = () => {
   levelDisplay.textContent = level
@@ -73,6 +89,7 @@ const startLevel = () => {
   birdMovement = setInterval(moveBirdRandomly, moveInterval)
 }
 
+// Bird Movement made random here in which the bird will be visible on the screen in random places
 const moveBirdRandomly = () => {
   const padding = 50
   const maxX = gameArea.clientWidth - bird.clientWidth - padding
@@ -84,12 +101,7 @@ const moveBirdRandomly = () => {
   bird.style.display = "block"
 }
 
-bird.addEventListener("click", (event) => {
-  score += 10
-  scoreDisplay.textContent = score
-  showBlood(event.pageX, event.pageY)
-})
-
+// here i positioned the blood effect behind the bird, as soon as bird is hit the blood hides after a very shot delay of 0.3s
 const showBlood = (x, y) => {
   blood.style.left = x - 30 + "px"
   blood.style.top = y - 30 + "px"

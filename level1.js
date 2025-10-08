@@ -24,7 +24,7 @@ document.body.addEventListener("click", function startClick() {
 
 // move the target image (png) format with the mouse
 window.addEventListener("mousemove", (event) => {
-  const targetWidth = target.offsetWidth / 2
+  const targetWidth = target.offsetWidth / 500
   const targetHeight = target.offsetHeight / 2
 
   target.style.left = event.pageX - targetWidth + "px"
@@ -106,7 +106,7 @@ const moveBirdRandomly = () => {
   bird.style.display = "block"
 }
 
-// here i positioned the blood effect behind the bird, as soon as bird is hit the blood hides after a very shot delay of 0.3s
+// here i positioned the blood effect behind the bird, as soon as bird is hit the blood appears and then hides after a very shot delay of 0.3s
 const showBlood = (x, y) => {
   blood.style.left = x - 30 + "px"
   blood.style.top = y - 30 + "px"

@@ -24,7 +24,7 @@ document.body.addEventListener("click", function startClick() {
 
 // move the target image (png) format with the mouse
 window.addEventListener("mousemove", (event) => {
-  const targetWidth = target.offsetWidth / 2
+  const targetWidth = target.offsetWidth / 500
   const targetHeight = target.offsetHeight / 2
   target.style.left = event.pageX - targetWidth + "px"
   target.style.top = event.pageY - targetHeight + "px"

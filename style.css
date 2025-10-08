@@ -125,3 +125,55 @@ h4 {
 .hidden {
   display: none;
 }
+
+/* after math */
+
+.level-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.level-btn {
+  padding: 12px 25px;
+  background-color: #ff4c4c;
+  color: white;
+  font-size: 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.level-btn:hover {
+  background-color: #ff1a1a;
+}
+
+#timer {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px red;
+  transition: color 0.3s ease;
+}
+
+.game-over {
+  color: red;
+  text-shadow: 0 0 20px black;
+  animation: pulse 1s infinite;
+}
+
+#gameOver {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  font-weight: bold;
+  color: red;
+}
+
+#gameOver.show {
+  display: block;
+}

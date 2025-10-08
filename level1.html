@@ -1,9 +1,9 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game</title>
+    <title>Level 1</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body style="background-image: url('/images/bc.jpg')">
@@ -13,13 +13,9 @@
       <h2>Time: <span id="timer">10</span></h2>
       <h2>Score: <span id="score">0</span></h2>
       <h2>Level: <span id="level">1</span></h2>
-      <a href="index.html" class="button">Reset</a>
+      <a href="index.html" class="button">Back</a>
     </div>
-    <h4>Press anywhere to Start the game</h4>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+    <h4>Press anywhere to Start Level 1</h4>
     <div id="game-area" class="game-area">
       <img id="bird" src="/bird.gif" alt="bird" class="bird" />
       <img id="target" src="/images/target.png" alt="target" class="target" />
@@ -30,7 +26,7 @@
         class="blood hidden"
       />
     </div>
-
-    <script src="script.js"></script>
+    <div id="gameOver" class="hidden">Game Over!</div>
+    <script src="level1.js"></script>
   </body>
-</html> -->
+</html>

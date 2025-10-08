@@ -55,15 +55,6 @@ bird.addEventListener("click", (event) => {
   }, 900)
 })
 
-// here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
-const startGame = () => {
-  score = 0
-  timeLeft = 10
-  scoreDisplay.textContent = score
-  timerDisplay.textContent = timeLeft
-  countdownStart(startLevel)
-}
-
 // starts the game after initial countdown of 3s
 const countdownStart = (callback) => {
   let count = 3
@@ -77,6 +68,15 @@ const countdownStart = (callback) => {
       callback()
     }
   }, 1000)
+}
+
+// here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
+const startGame = () => {
+  score = 0
+  timeLeft = 10
+  scoreDisplay.textContent = score
+  timerDisplay.textContent = timeLeft
+  countdownStart(startLevel)
 }
 
 // shows the current level, spawn the bird randomly and displays "times up" as soon as timer ends.

@@ -33,6 +33,8 @@ window.addEventListener("mousemove", (event) => {
 
 // clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
 bird.addEventListener("click", (event) => {
+  gunSound.currentTime = 0
+  gunSound.play()
   score += 10
   scoreDisplay.textContent = score
   showBlood(event.pageX, event.pageY)
@@ -42,15 +44,6 @@ bird.addEventListener("click", (event) => {
   setTimeout(() => {
     moveBirdRandomly()
   }, 1000)
-})
-
-// here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
-
-bird.addEventListener("click", () => {
-  gunSound.currentTime = 0
-  gunSound.play()
-  score += 10
-  scoreDisplay.textContent = score
 })
 
 // here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
@@ -83,6 +76,7 @@ const countdownStart = (callback) => {
 const startLevel = () => {
   levelDisplay.textContent = level
   moveBirdRandomly()
+  birdMovement = setInterval(moveBirdRandomly, moveInterval)
   gameTimer = setInterval(() => {
     timeLeft--
     timerDisplay.textContent = timeLeft
@@ -93,7 +87,6 @@ const startLevel = () => {
       bird.style.display = "none"
     }
   }, 1000)
-  birdMovement = setInterval(moveBirdRandomly, moveInterval)
 }
 
 // Bird Movement made random here in which the bird will be visible on the screen in random places

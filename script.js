@@ -8,10 +8,16 @@ const timerDisplay = document.querySelector("#timer")
 const levelDisplay = document.querySelector("#level")
 const gameArea = document.querySelector("#game-area")
 
+// Start game when clicking anywhere
+document.body.addEventListener("click", function startClick() {
+  document.body.removeEventListener("click", startClick)
+  startGame()
+})
+
 let score
 let timeLeft = 10
 let level = 1
-let moveInterval = 1400
+let moveInterval = 1200
 let gameTimer
 let birdMovement
 let levelCountdown
@@ -26,14 +32,17 @@ bird.addEventListener("click", () => {
 
 // Move target with mouse
 window.addEventListener("mousemove", (event) => {
-  target.style.left = event.pageX + "px"
-  target.style.top = event.pageY + "px"
+  const targetWidth = target.offsetWidth / 2
+  const targetHeight = target.offsetHeight / 2
+
+  target.style.left = event.pageX - targetWidth + "px"
+  target.style.top = event.pageY - targetHeight + "px"
 })
 
 // Start game
 const startGame = () => {
   score = 0
-  timeLeft = 20
+  timeLeft = 10
   scoreDisplay.textContent = score
   timerDisplay.textContent = timeLeft
   countdownStart(() => {
@@ -87,7 +96,6 @@ const moveBirdRandomly = () => {
 // Level up logic
 const levelUp = () => {
   if (level >= 3) {
-    alert("Game Over!")
     level = 1
     moveInterval = 1400
     return
@@ -107,7 +115,7 @@ const levelUp = () => {
   }, 1000)
 }
 
-// Hit detection
+// Detecting when the bird is hit
 bird.addEventListener("click", (event) => {
   score += 10
   scoreDisplay.textContent = score
@@ -123,9 +131,3 @@ const showBlood = (x, y) => {
     blood.classList.add("hidden")
   }, 200)
 }
-
-// Start game when clicking anywhere
-document.body.addEventListener("click", function startClick(e) {
-  document.body.removeEventListener("click", startClick)
-  startGame()
-})

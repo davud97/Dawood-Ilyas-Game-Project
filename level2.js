@@ -30,6 +30,17 @@ window.addEventListener("mousemove", (event) => {
   target.style.top = event.pageY - targetHeight + "px"
 })
 
+// Bird Movement made random here in which the bird will be visible on the screen in random places
+const moveBirdRandomly = () => {
+  const maxX = gameArea.clientWidth - bird.clientWidth
+  const maxY = gameArea.clientHeight - bird.clientHeight
+  const randomX = Math.random() * maxX
+  const randomY = Math.random() * maxY
+  bird.style.left = randomX + "px"
+  bird.style.top = randomY + "px"
+  bird.style.display = "block"
+}
+
 // clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
 bird.addEventListener("click", (event) => {
   gunSound.currentTime = 0
@@ -42,7 +53,7 @@ bird.addEventListener("click", (event) => {
   bird.style.display = "none"
   setTimeout(() => {
     moveBirdRandomly()
-  }, 1000)
+  }, 900)
 })
 
 // here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
@@ -84,17 +95,6 @@ const startLevel = () => {
       timerDisplay.textContent = "Time's up!"
     }
   }, 1000)
-}
-
-// Bird Movement made random here in which the bird will be visible on the screen in random places
-const moveBirdRandomly = () => {
-  const maxX = gameArea.clientWidth - bird.clientWidth
-  const maxY = gameArea.clientHeight - bird.clientHeight
-  const randomX = Math.random() * maxX
-  const randomY = Math.random() * maxY
-  bird.style.left = randomX + "px"
-  bird.style.top = randomY + "px"
-  bird.style.display = "block"
 }
 
 // here i positioned the blood effect behind the bird, as soon as bird is hit the blood hides after a very short delay of 0.3s

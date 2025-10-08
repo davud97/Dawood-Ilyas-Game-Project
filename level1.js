@@ -22,7 +22,7 @@ document.body.addEventListener("click", function startClick() {
   startGame()
 })
 
-// move the target image (png) format with the mouse
+// move the target image (png) format with the mouse and slight adjustments to make it closer to mouse.
 window.addEventListener("mousemove", (event) => {
   const targetWidth = target.offsetWidth / 500
   const targetHeight = target.offsetHeight / 2
@@ -30,6 +30,17 @@ window.addEventListener("mousemove", (event) => {
   target.style.left = event.pageX - targetWidth + "px"
   target.style.top = event.pageY - targetHeight + "px"
 })
+
+// Bird Movement made random here in which the bird will be visible on the screen in random places
+const moveBirdRandomly = () => {
+  const maxX = gameArea.clientWidth - bird.clientWidth
+  const maxY = gameArea.clientHeight - bird.clientHeight
+  const randomX = Math.random() * maxX
+  const randomY = Math.random() * maxY
+  bird.style.left = randomX + "px"
+  bird.style.top = randomY + "px"
+  bird.style.display = "block"
+}
 
 // clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
 bird.addEventListener("click", (event) => {
@@ -43,7 +54,7 @@ bird.addEventListener("click", (event) => {
   bird.style.display = "none"
   setTimeout(() => {
     moveBirdRandomly()
-  }, 1000)
+  }, 900)
 })
 
 // here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
@@ -87,17 +98,6 @@ const startLevel = () => {
       bird.style.display = "none"
     }
   }, 1000)
-}
-
-// Bird Movement made random here in which the bird will be visible on the screen in random places
-const moveBirdRandomly = () => {
-  const maxX = gameArea.clientWidth - bird.clientWidth
-  const maxY = gameArea.clientHeight - bird.clientHeight
-  const randomX = Math.random() * maxX
-  const randomY = Math.random() * maxY
-  bird.style.left = randomX + "px"
-  bird.style.top = randomY + "px"
-  bird.style.display = "block"
 }
 
 // here i positioned the blood effect behind the bird, as soon as bird is hit the blood appears and then hides after a very shot delay of 0.3s

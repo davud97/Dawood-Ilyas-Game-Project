@@ -44,7 +44,8 @@ bird.addEventListener("click", (event) => {
   }, 1000)
 })
 
-// clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
+// here the score resets for the level, the timer starts again from 10secs. starts the countdown before the game starts
+
 bird.addEventListener("click", () => {
   gunSound.currentTime = 0
   gunSound.play()

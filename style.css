@@ -10,7 +10,6 @@ html {
   height: 100%;
   font-family: Arial, sans-serif;
   overflow: hidden;
-  /* background: url("bc.jpg") no-repeat center center fixed; */
   background-size: cover;
   color: white;
 }
@@ -161,19 +160,4 @@ h4 {
   color: red;
   text-shadow: 0 0 20px black;
   animation: pulse 1s infinite;
-}
-
-#gameOver {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50px;
-  font-weight: bold;
-  color: red;
-}
-
-#gameOver.show {
-  display: block;
 }

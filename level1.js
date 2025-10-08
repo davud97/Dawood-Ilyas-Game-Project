@@ -66,7 +66,7 @@ const startLevel = () => {
     if (timeLeft <= 0) {
       clearInterval(gameTimer)
       clearInterval(birdMovement)
-      timerDisplay.textContent = "Game Over!"
+      timerDisplay.textContent = "Time`s Up!"
       bird.style.display = "none"
     }
   }, 1000)
@@ -97,9 +97,4 @@ const showBlood = (x, y) => {
   setTimeout(() => {
     blood.classList.add("hidden")
   }, 200)
-}
-
-const showGameOver = () => {
-  const gameOver = document.querySelector("#gameOver")
-  gameOver.classList.add("show")
 }

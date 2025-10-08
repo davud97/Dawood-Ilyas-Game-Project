@@ -36,6 +36,12 @@ bird.addEventListener("click", (event) => {
   score += 10
   scoreDisplay.textContent = score
   showBlood(event.pageX, event.pageY)
+
+  // hide and respawn bird after 1s
+  bird.style.display = "none"
+  setTimeout(() => {
+    moveBirdRandomly()
+  }, 1000)
 })
 
 // clicking on the bird will be count as a shot which will increase the score by 10, play the sound and show blood effect.
@@ -91,11 +97,10 @@ const startLevel = () => {
 
 // Bird Movement made random here in which the bird will be visible on the screen in random places
 const moveBirdRandomly = () => {
-  const padding = 50
-  const maxX = gameArea.clientWidth - bird.clientWidth - padding
-  const maxY = gameArea.clientHeight - bird.clientHeight - padding
-  const randomX = Math.floor(Math.random() * maxX) + padding / 2
-  const randomY = Math.floor(Math.random() * maxY) + padding / 2
+  const maxX = gameArea.clientWidth - bird.clientWidth
+  const maxY = gameArea.clientHeight - bird.clientHeight
+  const randomX = Math.random() * maxX
+  const randomY = Math.random() * maxY
   bird.style.left = randomX + "px"
   bird.style.top = randomY + "px"
   bird.style.display = "block"

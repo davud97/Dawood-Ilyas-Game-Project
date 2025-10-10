@@ -22,7 +22,7 @@ document.body.addEventListener("click", function startClick() {
   startGame()
 })
 
-// move the target image (png) format with the mouse and slight adjustments to make it closer to mouse.
+// move the target image (png) format with the mouse and slight adjustments to make it closer to mouse. this for cursor
 window.addEventListener("mousemove", (event) => {
   const targetWidth = target.offsetWidth / 500
   const targetHeight = target.offsetHeight / 2
